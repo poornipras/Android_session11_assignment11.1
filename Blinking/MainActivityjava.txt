@@ -1,0 +1,48 @@
+package com.pooja.blinkingeffect;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity{
+TextView textView;
+    Button btn_blink;
+    Animation blinkanimation;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textView=(TextView)findViewById(R.id.textView_blink);
+        btn_blink=(Button)findViewById(R.id.button_blink);
+        blinkanimation= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.blink_animation);
+
+        blinkanimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        btn_blink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setVisibility(View.VISIBLE);
+                textView.startAnimation(blinkanimation);
+            }
+        });
+    }
+
+}
